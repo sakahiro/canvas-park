@@ -12,3 +12,7 @@ AllCops:
   DisplayStyleGuide: true
 Rails:
   Enabled: true
+Metrics/LineLength:
+  Max: 100
+Documentation:
+  Enabled: false
