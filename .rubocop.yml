@@ -1,0 +1,14 @@
+AllCops:
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'log/**/*'
+    - 'public/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+  UserCache: false
+  TargetRubyVersion: 2.3
+  DisplayStyleGuide: true
+Rails:
+  Enabled: true
