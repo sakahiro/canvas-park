@@ -3,7 +3,7 @@ require 'test_helper'
 
 class WorksControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @work = works(:one)
+    @work = create(:work)
   end
 
   test 'should get index' do
