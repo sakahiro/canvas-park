@@ -10,5 +10,10 @@
   <%= @work.description %>
 </p>
 
+<p>
+  <strong>WorkImage:</strong>
+  <%= image_tag @work.work_image.url %>
+</p>
+
 <%= link_to 'Edit', edit_work_path(@work) %> |
 <%= link_to 'Back', works_path %>

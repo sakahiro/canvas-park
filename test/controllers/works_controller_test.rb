@@ -31,7 +31,11 @@ class WorksControllerTest < ActionDispatch::IntegrationTest
   test 'should not create work' do
     assert_no_difference('Work.count') do
       work = build(:work)
-      post works_url, params: { work: { description: work.description, title: work.title } }
+      post works_url, params: {
+        work: {
+          description: work.description, title: work.title, work_image: work_image
+        }
+      }
     end
 
     assert_redirected_to new_user_session_url
@@ -41,7 +45,11 @@ class WorksControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
     assert_difference('Work.count') do
       work = build(:work)
-      post works_url, params: { work: { description: work.description, title: work.title } }
+      post works_url, params: {
+        work: {
+          description: work.description, title: work.title, work_image: work_image
+        }
+      }
     end
 
     assert_redirected_to work_url(Work.last)
@@ -59,13 +67,21 @@ class WorksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should not update work' do
-    put work_url(@work), params: { work: { description: @work.description, title: @work.title } }
+    put work_url(@work), params: {
+      work: {
+        description: @work.description, title: @work.title, work_image: work_image
+      }
+    }
     assert_redirected_to new_user_session_url
   end
 
   test 'should update work' do
     sign_in @user
-    put work_url(@work), params: { work: { description: @work.description, title: @work.title } }
+    put work_url(@work), params: {
+      work: {
+        description: @work.description, title: @work.title, work_image: work_image
+      }
+    }
     assert_redirected_to work_url(@work)
   end
 
@@ -84,5 +100,11 @@ class WorksControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to works_url
+  end
+
+  private
+
+  def work_image
+    fixture_file_upload('files/test.jpg', 'image/jpg')
   end
 end
