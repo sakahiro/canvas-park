@@ -10,5 +10,6 @@ class WorkTest < ActiveSupport::TestCase
     refute build(:work, title: nil).valid?
     refute build(:work, title: 'a' * 51).valid?
     refute build(:work, description: 'a' * 501).valid?
+    refute build(:work, user_id: nil).valid?
   end
 end
