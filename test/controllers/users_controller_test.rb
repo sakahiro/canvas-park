@@ -3,7 +3,7 @@ require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = create(:user, confirmed_at: Time.zone.now)
+    @user = create(:user)
   end
 
   test 'should get index' do
@@ -11,7 +11,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should not show user' do
+    get user_url(@user)
+    assert_redirected_to new_user_session_url
+  end
+
   test 'should show user' do
+    sign_in @user
     get user_url(@user)
     assert_response :success
   end
@@ -36,5 +42,27 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
     put user_url(@user), params: { user: { user_name: @user.user_name } }
     assert_redirected_to user_url(@user)
+  end
+
+  test 'should not show following page' do
+    get following_user_url(@user)
+    assert_redirected_to new_user_session_url
+  end
+
+  test 'should show following page' do
+    sign_in @user
+    get following_user_url(@user)
+    assert_response :success
+  end
+
+  test 'should not show followers page' do
+    get followers_user_url(@user)
+    assert_redirected_to new_user_session_url
+  end
+
+  test 'should show followers page' do
+    sign_in @user
+    get followers_user_url(@user)
+    assert_response :success
   end
 end

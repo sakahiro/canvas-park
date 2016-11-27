@@ -6,5 +6,6 @@ FactoryGirl.define do
     password 'password'
     password_confirmation 'password'
     user_name { "cavas#{id}" }
+    confirmed_at { Time.zone.now }
   end
 end
