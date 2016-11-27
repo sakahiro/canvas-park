@@ -3,7 +3,7 @@ require 'test_helper'
 
 class WorksControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = create(:user, confirmed_at: Time.zone.now)
+    @user = create(:user)
     @work = create(:work, user: @user)
   end
 
@@ -32,9 +32,7 @@ class WorksControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference('Work.count') do
       work = build(:work)
       post works_url, params: {
-        work: {
-          description: work.description, title: work.title, work_image: work_image
-        }
+        work: { description: work.description, title: work.title, work_image: work_image }
       }
     end
 
@@ -46,9 +44,7 @@ class WorksControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Work.count') do
       work = build(:work)
       post works_url, params: {
-        work: {
-          description: work.description, title: work.title, work_image: work_image
-        }
+        work: { description: work.description, title: work.title, work_image: work_image }
       }
     end
 
@@ -68,9 +64,7 @@ class WorksControllerTest < ActionDispatch::IntegrationTest
 
   test 'should not update work' do
     put work_url(@work), params: {
-      work: {
-        description: @work.description, title: @work.title, work_image: work_image
-      }
+      work: { description: @work.description, title: @work.title, work_image: work_image }
     }
     assert_redirected_to new_user_session_url
   end
@@ -78,9 +72,7 @@ class WorksControllerTest < ActionDispatch::IntegrationTest
   test 'should update work' do
     sign_in @user
     put work_url(@work), params: {
-      work: {
-        description: @work.description, title: @work.title, work_image: work_image
-      }
+      work: { description: @work.description, title: @work.title, work_image: work_image }
     }
     assert_redirected_to work_url(@work)
   end
@@ -89,7 +81,6 @@ class WorksControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference('Work.count', -1) do
       delete work_url(@work)
     end
-
     assert_redirected_to new_user_session_url
   end
 
@@ -98,7 +89,6 @@ class WorksControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Work.count', -1) do
       delete work_url(@work)
     end
-
     assert_redirected_to works_url
   end
 
