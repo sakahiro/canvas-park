@@ -9,6 +9,8 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find(params[:id])
+    @comment = current_user.comments.new if current_user
+    @comments = @work.comments.all
     redirect_to works_url, notice: 'Work was not found' if @work.nil?
   end
 
@@ -16,8 +18,7 @@ class WorksController < ApplicationController
     @work = Work.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @work = current_user.works.new(work_params)

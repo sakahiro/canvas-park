@@ -15,5 +15,28 @@
   <%= image_tag @work.work_image.url %>
 </p>
 
+<% if current_user.present? %>
+  <%= render 'works/comment_form', comment: @comment %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comments</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @comments.each do |comment| %>
+      <tr id="comment_box">
+        <td><%= comment.content %></td>
+        <% if current_user == comment.user %>
+          <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'Edit', edit_work_path(@work) %> |
 <%= link_to 'Back', works_path %>

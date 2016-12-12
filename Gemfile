@@ -29,28 +29,27 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
-gem 'devise'
 gem 'carrierwave'
+gem 'devise'
 gem 'mini_magick'
 
 group :development, :test do
-  gem 'pry-rails'
   gem 'factory_girl_rails'
+  gem 'pry-rails'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console'
   gem 'listen', '~> 3.0.5'
+  gem 'web-console'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  gem 'rubocop', require: false
   gem 'guard'
   gem 'guard-minitest'
   gem 'letter_opener'
+  gem 'rubocop', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
