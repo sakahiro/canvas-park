@@ -12,8 +12,7 @@ class UsersController < ApplicationController
     redirect_to users_url, notice: 'User was not found' if @user.nil?
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @user.update(user_params)

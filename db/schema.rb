@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161126094802) do
+ActiveRecord::Schema.define(version: 20161211075004) do
+
+  create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "content",    limit: 65535, null: false
+    t.integer  "user_id",                  null: false
+    t.integer  "work_id",                  null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+    t.index ["work_id"], name: "index_comments_on_work_id", using: :btree
+  end
 
   create_table "relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "follower_id"
@@ -57,5 +67,7 @@ ActiveRecord::Schema.define(version: 20161126094802) do
     t.index ["user_id"], name: "index_works_on_user_id", using: :btree
   end
 
+  add_foreign_key "comments", "users"
+  add_foreign_key "comments", "works"
   add_foreign_key "works", "users"
 end

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
   resources :works
   resources :relationships, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy]
 
   root to: 'works#index'
 end
