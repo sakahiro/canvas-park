@@ -7,9 +7,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'valid? is false' do
-    create(:user, user_name: 'canvas')
     refute build(:user, user_name: 'a' * 31).valid?
-    refute build(:user, user_name: 'canvas').valid?
   end
 
   test 'should follow and unfollow a user' do

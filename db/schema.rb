@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161211075004) do
+ActiveRecord::Schema.define(version: 20161213124928) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "content",    limit: 65535, null: false
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 20161211075004) do
     t.index ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
     t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
     t.index ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
+  end
+
+  create_table "stocks", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "work_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_stocks_on_user_id", using: :btree
+    t.index ["work_id"], name: "index_stocks_on_work_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -69,5 +78,7 @@ ActiveRecord::Schema.define(version: 20161211075004) do
 
   add_foreign_key "comments", "users"
   add_foreign_key "comments", "works"
+  add_foreign_key "stocks", "users"
+  add_foreign_key "stocks", "works"
   add_foreign_key "works", "users"
 end

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :works
   resources :relationships, only: [:create, :destroy]
   resources :comments, only: [:create, :destroy]
+  resources :stocks, only: [:create, :destroy]
 
   root to: 'works#index'
 end

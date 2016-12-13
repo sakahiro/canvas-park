@@ -14,9 +14,11 @@ class User < ApplicationRecord
                                    dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
-  has_many :comments
+  has_many :comments, dependent: :destroy
+  has_many :stocks, dependent: :destroy
+  has_many :stocked_works, through: :stocks, source: :work
 
-  validates :user_name, length: { maximum: 30 }, uniqueness: true
+  validates :user_name, length: { maximum: 30 }
 
   def follow(other_user)
     active_relationships.create(followed_id: other_user.id)
@@ -32,5 +34,13 @@ class User < ApplicationRecord
 
   def followed_by?(other_user)
     followers.include?(other_user)
+  end
+
+  def stock(work)
+    stocks.create(work_id: work.id)
+  end
+
+  def unstock(work)
+    stocks.find_by(work_id: work.id).destroy
   end
 end

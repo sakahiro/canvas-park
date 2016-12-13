@@ -1,0 +1,3 @@
+<%= form_for(current_user.stocks.find_by(work_id: @work), method: :delete, remote: true) do |f| %>
+  <%= f.submit 'Unstock' %>
+<% end %>

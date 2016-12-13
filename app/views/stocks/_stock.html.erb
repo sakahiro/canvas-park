@@ -1,0 +1,4 @@
+<%= form_for(current_user.stocks.build, remote: true) do |f| %>
+  <%= f.hidden_field :work_id, value: @work.id %>
+  <%= f.submit 'Stock' %>
+<% end %>

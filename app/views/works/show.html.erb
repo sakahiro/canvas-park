@@ -15,6 +15,10 @@
   <%= image_tag @work.work_image.url %>
 </p>
 
+<% if current_user.present? && !current_user.works.include?(@work) %>
+  <%= render 'stocks/stock_form' %>
+<% end %>
+
 <% if current_user.present? %>
   <%= render 'works/comment_form', comment: @comment %>
 <% end %>

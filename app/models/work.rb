@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 class Work < ApplicationRecord
-  has_many :comments
+  has_many :comments, dependent: :destroy
+  has_many :stocks, dependent: :destroy
+  has_many :stocking_user, through: :stocks, source: :user
   belongs_to :user
 
   mount_uploader :work_image, WorkImageUploader
