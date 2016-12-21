@@ -41,3 +41,10 @@ bower.json
 
 # Ignore Uploader
 public/uploads/
+
+# Ignore build file
+!/app/assets/javascripts/.keep
+/app/assets/javascripts
+
+# Ignore node_modules
+/node_modules

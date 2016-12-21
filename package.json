@@ -1,0 +1,22 @@
+{
+  "name": "canvas-park",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:sakahiro/canvas-park.git",
+  "author": "sakahiro",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch",
+    "rubocop": "git diff --name-only --diff-filter=ACMRTUXB --cached | grep '\\.rb' | grep -v db/schema.rb | xargs bundle exec rubocop"
+  },
+  "pre-commit": [
+    "rubocop"
+  ],
+  "devDependencies": {
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "pre-commit": "^1.2.2",
+    "webpack": "^1.14.0"
+  }
+}
