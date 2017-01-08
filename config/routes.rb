@@ -1,4 +1,8 @@
+# frozen_string_literal: true
 Rails.application.routes.draw do
+  get 'statics/top'
+  get 'statics/about'
+
   devise_for :users
   resources :users, only: [:index, :show, :edit, :update] do
     member do
@@ -10,5 +14,5 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :destroy]
   resources :stocks, only: [:create, :destroy]
 
-  root to: 'works#index'
+  root to: 'statics#top'
 end
