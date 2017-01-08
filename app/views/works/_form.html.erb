@@ -11,19 +11,20 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :work_image %>
     <%= f.file_field :work_image, accept: 'image/jpeg,image/gif,image/png' %>
+    <p class="help-block">5mbサイズ以下の画像でお願いします。</p>
   </div>
 
   <div class="actions">

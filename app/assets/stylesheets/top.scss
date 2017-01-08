@@ -1,0 +1,13 @@
+.top {
+  &-carousel-inner {
+    height: 450px;
+  }
+  &-item {
+    height: 100%;
+    img {
+      margin-left: auto;
+      margin-right: auto;
+      height: 100% !important;
+    }
+  }
+}

@@ -10,8 +10,10 @@
   </div>
 <% end %>
 
-<%= form_for(comment) do |f| %>
+<%= form_for(comment, html: { class: "form-inline" }) do |f| %>
   <%= f.hidden_field :work_id, value: @work.id %>
-  <%= f.text_area :content, size: "80*3" %>
-  <%= f.submit "コメントする" %>
+  <div class="form-group">
+    <%= f.text_field :content, class: "form-control" %>
+  </div>
+  <%= f.submit "コメントする", class: "btn btn-default" %>
 <% end %>

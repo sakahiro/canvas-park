@@ -1,30 +1,34 @@
-<p id="notice"><%= notice %></p>
+<div class="works-index">
+  <p id="notice"><%= notice %></p>
 
-<h1>Works</h1>
+  <h1>作品一覧</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <div class="row">
     <% @works.each do |work| %>
-      <tr>
-        <td><%= work.title %></td>
-        <td><%= work.description %></td>
-        <td><%= image_tag work.work_image.url %></td>
-        <td><%= link_to 'Show', work %></td>
-        <td><%= link_to 'Edit', edit_work_path(work) %></td>
-        <td><%= link_to 'Destroy', work, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="col-xs-12 col-sm-6 col-md-3">
+        <div class="thumbnail">
+          <%= link_to work, class: "thumbnail-image-wrapper" do %>
+            <%= image_tag work.work_image.url %>
+          <% end %>
+          <div class="caption clearfix">
+            <div class="pull-left">
+              <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+              <%= link_to stocks_path(stock: { work_id: work.id }), method: :post do %>
+                <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+              <% end %>
+            </div>
+            <div class="pull-right">
+              <%= link_to user_path(work.user) do %>
+                by <%= work.user.user_name || "名前がまだありません" %>
+              <% end %>
+              <% if user_signed_in? && current_user == work.user %>
+                <%= link_to '編集', edit_work_path(work) %>
+                <%= link_to '削除', work, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Work', new_work_path %>
+  </div>
+</div>

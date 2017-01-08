@@ -1,46 +1,45 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @work.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @work.description %>
-</p>
-
-<p>
-  <strong>WorkImage:</strong>
-  <%= image_tag @work.work_image.url %>
-</p>
-
-<% if current_user.present? && !current_user.works.include?(@work) %>
-  <%= render 'stocks/stock_form' %>
-<% end %>
-
-<% if current_user.present? %>
-  <%= render 'works/comment_form', comment: @comment %>
-<% end %>
-
-<table>
-  <thead>
-    <tr>
-      <th>Comments</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @comments.each do |comment| %>
-      <tr id="comment_box">
-        <td><%= comment.content %></td>
-        <% if current_user == comment.user %>
-          <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<div class="work-show">
+  <div class="image-wrapper pull-left">
+    <%= image_tag @work.work_image.url %>
+  </div>
+  <div class="right-content-wrapper pull-right">
+      <div class="user-info right-content">
+        <%= image_tag @work.user.user_image, class: "img-circle" %>
+        <div class="user-info-detail pull-right">
+          <p><%= @work.user.user_name %></p>
+          <p><%= @work.user.email %></p>
+        </div>
+      </div>
+      <div class="work-info right-content">
+        <h2><%= @work.title %></h2>
+        <p><%= @work.description %></p>
+      </div>
+      <% if current_user.present? && !current_user.works.include?(@work) %>
+        <div class="action right-content">
+          <%= render 'stocks/stock_form' %>
+        </div>
+      <% end %>
+      <div class="comment-form right-content">
+        <% if current_user.present? %>
+          <%= render 'works/comment_form', comment: @comment %>
         <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      </div>
+      <div class="comment-feed right-content">
+        <table class="table">
+          Comments
+          <% @comments.each do |comment| %>
+            <tr id="comment_box">
+              <td><%= comment.content %></td>
+              <% if current_user == comment.user %>
+                <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% end %>
+            </tr>
+          <% end %>
+        </table>
+      </div>
 
-<%= link_to 'Edit', edit_work_path(@work) %> |
-<%= link_to 'Back', works_path %>
+    <%= link_to 'Edit', edit_work_path(@work) %> |
+    <%= link_to 'Back', works_path %>
+  </div>
+</div>
