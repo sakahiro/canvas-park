@@ -1,44 +1,60 @@
-<div class="top">
-  <div id="carousel-generic" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#carousel-generic" data-slide-to="0" class="active"></li>
-      <li data-target="#carousel-generic" data-slide-to="1"></li>
-      <li data-target="#carousel-generic" data-slide-to="2"></li>
-    </ol>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CanvasPark</title>
+    <%= csrf_meta_tags %>
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner top-carousel-inner" role="listbox">
-      <div class="item top-item active">
-        <%= image_tag @works.first.work_image %>
-        <div class="carousel-caption">
-          1位
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= render "layouts/header" %>
+    <p id="notice"><%= notice %></p>
+    <div class="top">
+      <div id="carousel-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-generic" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner top-carousel-inner" role="listbox">
+          <div class="item top-item active">
+            <%= image_tag @works.first.work_image %>
+            <div class="carousel-caption">
+              1位
+            </div>
+          </div>
+          <div class="item top-item">
+            <%= image_tag @works.second.work_image %>
+            <div class="carousel-caption">
+              2位
+            </div>
+          </div>
+          <div class="item top-item">
+            <%= image_tag @works.third.work_image %>
+            <div class="carousel-caption">
+              3位
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="item top-item">
-        <%= image_tag @works.second.work_image %>
-        <div class="carousel-caption">
-          2位
-        </div>
-      </div>
-      <div class="item top-item">
-        <%= image_tag @works.third.work_image %>
-        <div class="carousel-caption">
-          3位
-        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-generic" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-generic" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
     </div>
-
-    <!-- Controls -->
-    <a class="left carousel-control" href="#carousel-generic" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#carousel-generic" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</div>
-<h1>Statics#top</h1>
-
+    <div class="container">
+      <h1>Statics#top</h1>
+    </div>
+  </body>
+</html>

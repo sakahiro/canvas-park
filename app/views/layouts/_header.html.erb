@@ -16,7 +16,7 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
           <li><%= link_to 'トップ', root_path %></li>
-          <li class="active"><%= link_to 'ギャラリー', works_path %><span class="sr-only">(current)</span></li>
+          <li><%= link_to 'ギャラリー', works_path %></li>
           <li><%= link_to '作品投稿', new_work_path %></li>
           <li><a href="#">お知らせ</a></li>
           <% if user_signed_in? %>
