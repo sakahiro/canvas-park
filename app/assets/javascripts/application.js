@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require app.bundle
 //= require bootstrap-sprockets
 //= require_tree .
