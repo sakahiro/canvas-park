@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 FactoryGirl.define do
   factory :comment do
-    content 'a' * 250
+    content "a" * 250
 
     association :user
     association :work

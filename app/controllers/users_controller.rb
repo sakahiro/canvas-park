@@ -9,38 +9,38 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    redirect_to users_url, notice: 'User was not found' if @user.nil?
+    redirect_to users_url, notice: "User was not found" if @user.nil?
   end
 
   def edit; end
 
   def update
     if @user.update(user_params)
-      redirect_to user_url(@user), notice: 'User was successfully updated.'
+      redirect_to user_url(@user), notice: "User was successfully updated."
     else
       render :edit
     end
   end
 
   def following
-    @title = 'Folloing'
+    @title = "Folloing"
     user = User.find(params[:id])
     @users = user.following
-    render 'show_follow'
+    render "show_follow"
   end
 
   def followers
-    @title = 'Follower'
+    @title = "Follower"
     user = User.find(params[:id])
     @users = user.followers
-    render 'show_follow'
+    render "show_follow"
   end
 
   private
 
   def set_user
     @user = current_user
-    redirect_to users_url, notice: 'User was not found' if @user.nil?
+    redirect_to users_url, notice: "User was not found" if @user.nil?
   end
 
   def user_params

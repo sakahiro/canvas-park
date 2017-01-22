@@ -11,7 +11,7 @@ class WorksController < ApplicationController
     @work = Work.find(params[:id])
     @comment = current_user.comments.new if current_user
     @comments = @work.comments.all
-    redirect_to works_url, notice: 'Work was not found' if @work.nil?
+    redirect_to works_url, notice: "Work was not found" if @work.nil?
   end
 
   def new
@@ -24,7 +24,7 @@ class WorksController < ApplicationController
     @work = current_user.works.new(work_params)
     respond_to do |format|
       if @work.save
-        format.html { redirect_to @work, notice: 'Work was successfully created.' }
+        format.html { redirect_to @work, notice: "Work was successfully created." }
         format.json { render json: @work }
       else
         format.html { render :new }
@@ -35,7 +35,7 @@ class WorksController < ApplicationController
 
   def update
     if @work.update(work_params)
-      redirect_to @work, notice: 'Work was successfully updated.'
+      redirect_to @work, notice: "Work was successfully updated."
     else
       render :edit
     end
@@ -43,14 +43,14 @@ class WorksController < ApplicationController
 
   def destroy
     @work.destroy
-    redirect_to works_url, notice: 'Work was successfully destroyed.'
+    redirect_to works_url, notice: "Work was successfully destroyed."
   end
 
   private
 
   def set_work
     @work = current_user.works.find(params[:id])
-    redirect_to works_url, notice: 'Work was not found' if @work.nil?
+    redirect_to works_url, notice: "Work was not found" if @work.nil?
   end
 
   def work_params

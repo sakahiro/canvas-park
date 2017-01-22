@@ -14,6 +14,6 @@ class Work < ApplicationRecord
   validate :image_size
 
   def image_size
-    errors.add(:work_image, 'ファイルサイズが大きすぎます。5MB以下にしてください') if work_image.size > 5.megabytes
+    errors.add(:work_image, "ファイルサイズが大きすぎます。5MB以下にしてください") if work_image.size > 5.megabytes
   end
 end

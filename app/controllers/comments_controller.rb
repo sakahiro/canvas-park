@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
       redirect_to work_url(@work)
     else
       @comments = @work.comments.all
-      render 'works/show'
+      render "works/show"
     end
   end
 
