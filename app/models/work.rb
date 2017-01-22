@@ -5,15 +5,15 @@ class Work < ApplicationRecord
   has_many :stocking_user, through: :stocks, source: :user
   belongs_to :user
 
-  mount_uploader :work_image, WorkImageUploader
+  mount_uploader :image, WorkImageUploader
 
   validates :title, presence: true, length: { maximum: 50 }
   validates :description, length: { maximum: 500 }
-  validates :work_image, presence: true
+  validates :image, presence: true
 
   validate :image_size
 
   def image_size
-    errors.add(:work_image, "ファイルサイズが大きすぎます。5MB以下にしてください") if work_image.size > 5.megabytes
+    errors.add(:image, "ファイルサイズが大きすぎます。5MB以下にしてください") if image.size > 5.megabytes
   end
 end

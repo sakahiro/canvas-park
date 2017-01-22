@@ -7,12 +7,12 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "valid? is false" do
-    refute build(:user, user_name: "a" * 31).valid?
+    refute build(:user, name: "a" * 31).valid?
   end
 
   test "should follow and unfollow a user" do
-    saka = create(:user, user_name: "saka")
-    hiro = create(:user, user_name: "hiro")
+    saka = create(:user, name: "saka")
+    hiro = create(:user, name: "hiro")
 
     refute saka.following?(hiro)
     refute hiro.followed_by?(saka)

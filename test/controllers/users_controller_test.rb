@@ -34,13 +34,13 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should not update user" do
-    put user_url(@user), params: { user: { user_name: @user.user_name } }
+    put user_url(@user), params: { user: { name: @user.name } }
     assert_redirected_to new_user_session_url
   end
 
   test "should update user" do
     sign_in @user
-    put user_url(@user), params: { user: { user_name: @user.user_name } }
+    put user_url(@user), params: { user: { name: @user.name } }
     assert_redirected_to user_url(@user)
   end
 

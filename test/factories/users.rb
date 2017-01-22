@@ -5,7 +5,7 @@ FactoryGirl.define do
     email { "canvas#{id}@park.com" }
     password "password"
     password_confirmation "password"
-    user_name { "cavas#{id}" }
+    name { "cavas#{id}" }
     confirmed_at { Time.zone.now }
   end
 end

@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 20161213124928) do
   end
 
   create_table "relationships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "follower_id"
-    t.integer  "followed_id"
+    t.integer  "follower_id", null: false
+    t.integer  "followed_id", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["followed_id"], name: "index_relationships_on_followed_id", using: :btree
@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 20161213124928) do
     t.string   "unconfirmed_email"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "user_name"
-    t.string   "user_image"
+    t.string   "name"
+    t.string   "image"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(version: 20161213124928) do
     t.integer  "user_id",                   null: false
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-    t.string   "work_image"
+    t.string   "image"
     t.index ["user_id", "created_at"], name: "index_works_on_user_id_and_created_at", using: :btree
     t.index ["user_id"], name: "index_works_on_user_id", using: :btree
   end

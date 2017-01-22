@@ -1,5 +1,5 @@
 class AddWorkImageToWorks < ActiveRecord::Migration[5.0]
   def change
-    add_column :works, :work_image, :string
+    add_column :works, :image, :string
   end
 end

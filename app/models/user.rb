@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
-  mount_uploader :user_image, UserImageUploader
+  mount_uploader :image, UserImageUploader
 
   has_many :works, dependent: :destroy
   has_many :active_relationships, class_name: "Relationship",
@@ -20,7 +20,7 @@ class User < ApplicationRecord
   has_many :stocks, dependent: :destroy
   has_many :stocked_works, through: :stocks, source: :work
 
-  validates :user_name, length: { maximum: 30 }
+  validates :name, length: { maximum: 30 }
 
   def follow(other_user)
     active_relationships.create(followed_id: other_user.id)

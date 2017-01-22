@@ -54,6 +54,6 @@ class WorksController < ApplicationController
   end
 
   def work_params
-    params.require(:work).permit(:title, :description, :work_image)
+    params.require(:work).permit(:title, :description, :image)
   end
 end

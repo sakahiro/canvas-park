@@ -1,12 +1,12 @@
 <div class="work-show">
   <div class="image-wrapper pull-left">
-    <%= image_tag @work.work_image.url %>
+    <%= image_tag @work.image.url %>
   </div>
   <div class="right-content-wrapper pull-right">
       <div class="user-info right-content">
-        <%= image_tag @work.user.user_image, class: "img-circle" %>
+        <%= image_tag @work.user.image, class: "img-circle" %>
         <div class="user-info-detail pull-right">
-          <p><%= @work.user.user_name %></p>
+          <p><%= @work.user.name %></p>
           <p><%= @work.user.email %></p>
         </div>
       </div>

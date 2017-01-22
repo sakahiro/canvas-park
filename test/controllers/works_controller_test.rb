@@ -32,7 +32,7 @@ class WorksControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference("Work.count") do
       work = build(:work)
       post works_url, params: {
-        work: { description: work.description, title: work.title, work_image: work_image }
+        work: { description: work.description, title: work.title, image: work_image }
       }
     end
 
@@ -44,7 +44,7 @@ class WorksControllerTest < ActionDispatch::IntegrationTest
     assert_difference("Work.count") do
       work = build(:work)
       post works_url, params: {
-        work: { description: work.description, title: work.title, work_image: work_image }
+        work: { description: work.description, title: work.title, image: work_image }
       }
     end
 
@@ -64,7 +64,7 @@ class WorksControllerTest < ActionDispatch::IntegrationTest
 
   test "should not update work" do
     put work_url(@work), params: {
-      work: { description: @work.description, title: @work.title, work_image: work_image }
+      work: { description: @work.description, title: @work.title, image: work_image }
     }
     assert_redirected_to new_user_session_url
   end
@@ -72,7 +72,7 @@ class WorksControllerTest < ActionDispatch::IntegrationTest
   test "should update work" do
     sign_in @user
     put work_url(@work), params: {
-      work: { description: @work.description, title: @work.title, work_image: work_image }
+      work: { description: @work.description, title: @work.title, image: work_image }
     }
     assert_redirected_to work_url(@work)
   end

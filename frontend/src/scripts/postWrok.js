@@ -5,7 +5,7 @@ module.exports = ($) => {
   $(document).ready(() => {
     if(!$("#my-awesome-dropzone").length) { return }
     new Dropzone("#my-awesome-dropzone", {
-      paramName: "work[work_image]",
+      paramName: "work[image]",
       maxFilesize: 5,
       uploadMultiple: false,
       addRemoveLinks: true,
